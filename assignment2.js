@@ -1,7 +1,24 @@
+
+//Array for testing
+
+const arr = [1,2,3];
+
 // FOR EACH //
-Array.prototype.myEach = function() {
+Array.prototype.myEach = function(callbackFn) {
     //The forEach() method executes a provided function once for each array element.//
+
+    for (let i = 0; i < this.length; i++) {
+        if(this[i]== undefined) continue; //for cases like these [1,,3]
+        callbackFn(this[i],i,this);
+    }//end of for loop
 };
+
+//Testing myEach
+console.log("myEach: ");
+arr.myEach((x)=>console.log(x));
+
+console.log("forEach: ");
+arr.forEach((x)=>console.log(x));
 
 // MAP //
 Array.prototype.myMap = function() {
