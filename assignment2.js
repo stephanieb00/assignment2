@@ -2,6 +2,7 @@
 //Array for testing
 
 const arr = [1,2,3];
+const arr2 = [1,,3];
 
 // FOR EACH //
 Array.prototype.myEach = function(callbackFn) {
@@ -13,12 +14,18 @@ Array.prototype.myEach = function(callbackFn) {
     }//end of for loop
 };
 
+
 //Testing myEach
 console.log("myEach: ");
 arr.myEach((x)=>console.log(x));
 
 console.log("forEach: ");
 arr.forEach((x)=>console.log(x));
+
+console.log("myEach for undefined: ");
+arr2.myEach((x)=>console.log(x));
+console.log("myEach for undefined: ");
+arr2.forEach((x)=>console.log(x));
 
 // MAP //
 Array.prototype.myMap = function() {
