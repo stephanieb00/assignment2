@@ -28,9 +28,17 @@ console.log("myEach for undefined: ");
 arr2.forEach((x)=>console.log(x));
 
 // MAP //
-Array.prototype.myMap = function() {
+Array.prototype.myMap = function(callbackFn) {
     //The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.//
-
+    /*
+        Accepts three arguments:
+            current element
+            current elements index
+            entire array
+    */
+   for (let i = 0; i < this.length; i++) {
+       callbackFn(this[i],i,this);
+   }
 };
 
 // FILTER //
