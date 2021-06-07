@@ -38,8 +38,18 @@ Array.prototype.myMap = function(callbackFn) {
     */
    for (let i = 0; i < this.length; i++) {
        callbackFn(this[i],i,this);
-   }
+   }//end of for loop
 };
+
+
+//Testing myMap
+console.log("myMap: ");
+const map1a = arr.myMap(x => x * 2);
+console.log(map1a);
+console.log("Map: ");
+const map1b = arr.map(x => x * 2);
+console.log(map1b);
+
 
 // FILTER //
 Array.prototype.myFilter = function() {
