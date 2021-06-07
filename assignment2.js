@@ -36,19 +36,29 @@ Array.prototype.myMap = function(callbackFn) {
             current elements index
             entire array
     */
+   const returnArray = []; //empty array that will be returned later.
    for (let i = 0; i < this.length; i++) {
-       callbackFn(this[i],i,this);
-   }//end of for loop
+       returnArray.push(callbackFn(this[i],i,this));
+   }//end of for loo
+
+   return(returnArray);
 };
 
 
 //Testing myMap
 console.log("myMap: ");
-const map1a = arr.myMap(x => x * 2);
+const map1a = arr.myMap(x=> x);
 console.log(map1a);
 console.log("Map: ");
-const map1b = arr.map(x => x * 2);
+const map1b = arr.map(x=> x);
 console.log(map1b);
+
+console.log("myMap: ");
+const map2a = arr2.myMap(x=> x);
+console.log(map2a);
+console.log("Map: ");
+const map2b = arr2.map(x => x);
+console.log(map2b);
 
 
 // FILTER //
