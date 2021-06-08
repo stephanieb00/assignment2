@@ -62,8 +62,25 @@ console.log(map2b);
 
 
 // FILTER //
-Array.prototype.myFilter = function() {
+Array.prototype.myFilter = function(callbackFn) {
     //The filter() method creates a new array with all elements that pass the test implemented by the provided function.//
+    /*
+        We want to take these steps:
+            - Create an empty array 
+            - Iterate through each element in array elements. 
+            - Check for the current element of the array. 
+            - If it is true then add it to the empty array. 
+    */
+
+    const returnArray = []; //empty array
+    for (let i = 0; i < this.length; i++) {
+        if (callbackFn(this[i]))
+        {
+            returnArray.push(this[i]);
+        }//end of if statement
+    }//end of for loop
+    
+    return(returnArray);
 };
 
 // SOME //
