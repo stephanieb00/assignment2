@@ -3,6 +3,8 @@
 
 const arr = [1,2,3];
 const arr2 = [1,,3];
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const words2 = ['spray', 'limit', 'elite','', 'destruction', 'present'];
 
 // FOR EACH //
 Array.prototype.myEach = function(callbackFn) {
@@ -78,10 +80,26 @@ Array.prototype.myFilter = function(callbackFn) {
         {
             returnArray.push(this[i]);
         }//end of if statement
+
     }//end of for loop
     
     return(returnArray);
 };
+
+//Test myFilter
+
+const words_arr1a = words.myFilter(word => word.length > 6); //Test myFilter
+console.log(words_arr1a);//Print myFilter
+
+const words_arr1b = words.filter(word => word.length > 6); //Test .filter
+console.log(words_arr1b);//print .filter
+
+
+const words_arr2a = words2.myFilter(word => word.length > 6); //Test myFilter
+console.log(words_arr2a);//Print myFilter
+
+const words_arr2b = words2.filter(word => word.length > 6); //Test .filter
+console.log(words_arr2b);//print .filter
 
 // SOME //
 Array.prototype.mySome = function() {
