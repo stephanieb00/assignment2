@@ -89,24 +89,40 @@ Array.prototype.myFilter = function(callbackFn) {
 //Test myFilter
 
 const words_arr1a = words.myFilter(word => word.length > 6); //Test myFilter
+console.log("myFilter: ");
 console.log(words_arr1a);//Print myFilter
 
 const words_arr1b = words.filter(word => word.length > 6); //Test .filter
+console.log("Filter: ");
 console.log(words_arr1b);//print .filter
 
 
 const words_arr2a = words2.myFilter(word => word.length > 6); //Test myFilter
+console.log("myFilter: ");
 console.log(words_arr2a);//Print myFilter
 
 const words_arr2b = words2.filter(word => word.length > 6); //Test .filter
+console.log("Filter: ");
 console.log(words_arr2b);//print .filter
 
 // SOME //
-Array.prototype.mySome = function() {
+Array.prototype.mySome = function(callback) {
+    //This parameter is no longer called callbackFn according to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Some
     /*The some() method tests whether at least one element in the array passes the test implemented by the provided function. 
         It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. 
         It doesn't modify the array.
     */
+    
+    for (let i = 0; i < this.length; i++) {
+        callback[0].call(this[i],i,this);
+        const flag = callback[0](this[i],i,this)
+        if(flag)
+        {
+            return flag;
+        }
+    }
+    return false;
+
 };
 
 // EVERY //
