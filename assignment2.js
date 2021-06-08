@@ -149,7 +149,13 @@ console.log([12, 5, 8, 1, 4].some(x => x > 10)); //Print and Test Some: true
 // EVERY //
 Array.prototype.myEvery = function() {
     //The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.//
-
+    for (let i = 0; i < this.length; i++) {
+        if(!callback(this[i]))
+        {
+            return false;
+        }
+    }
+    return true;
 };
 
 // REDUCE //
