@@ -115,11 +115,9 @@ Array.prototype.mySome = function(callback) {
     */
     
     for (let i = 0; i < this.length; i++) {
-        callback(this[i],i,this);
-        const flag = callback[0](this[i],i,this)
-        if(flag)
+        if(callback(this[i]))
         {
-            return flag;
+            return true;
         }
     }
     return false;
@@ -128,15 +126,25 @@ Array.prototype.mySome = function(callback) {
 
 //Test mySome 
 
-const even1a = (element) => element % 2 === 0;
+const even1a = (element) => element % 2 === 0;//Test mySome
 console.log('mySome: ')
-console.log(array.mySome(even1a));
+console.log(array.mySome(even1a));//Print mySome
 
-const even1b = (element) => element % 2 === 0;
+const even1b = (element) => element % 2 === 0;//Test Some
 console.log('Some: ')
-console.log(array.some(even1b));
-
+console.log(array.some(even1b));//Print Some
 // expected output: true
+
+console.log('mySome: ')//Test mySome
+console.log([2, 5, 8, 1, 4].mySome(x => x > 10));  // Print and Test mySome: false 
+console.log('mySome: ')
+console.log([12, 5, 8, 1, 4].mySome(x => x > 10)); // Print and Test mySome: true
+
+
+console.log('Some: ')//Test Some
+console.log([2, 5, 8, 1, 4].some(x => x > 10));  // Print and Test Some: false
+console.log('Some: ')
+console.log([12, 5, 8, 1, 4].some(x => x > 10)); //Print and Test Some: true
 
 // EVERY //
 Array.prototype.myEvery = function() {
