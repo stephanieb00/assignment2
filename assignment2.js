@@ -5,6 +5,7 @@ const arr = [1,2,3];
 const arr2 = [1,,3];
 const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 const words2 = ['spray', 'limit', 'elite','', 'destruction', 'present'];
+const array = [1, 2, 3, 4, 5];
 
 // FOR EACH //
 Array.prototype.myEach = function(callbackFn) {
@@ -114,7 +115,7 @@ Array.prototype.mySome = function(callback) {
     */
     
     for (let i = 0; i < this.length; i++) {
-        callback[0].call(this[i],i,this);
+        callback(this[i],i,this);
         const flag = callback[0](this[i],i,this)
         if(flag)
         {
@@ -124,6 +125,18 @@ Array.prototype.mySome = function(callback) {
     return false;
 
 };
+
+//Test mySome 
+
+const even1a = (element) => element % 2 === 0;
+console.log('mySome: ')
+console.log(array.mySome(even1a));
+
+const even1b = (element) => element % 2 === 0;
+console.log('Some: ')
+console.log(array.some(even1b));
+
+// expected output: true
 
 // EVERY //
 Array.prototype.myEvery = function() {
