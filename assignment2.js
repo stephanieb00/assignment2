@@ -147,16 +147,45 @@ console.log('Some: ')
 console.log([12, 5, 8, 1, 4].some(x => x > 10)); //Print and Test Some: true
 
 // EVERY //
-Array.prototype.myEvery = function() {
+Array.prototype.myEvery = function(callbackFn) {
     //The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.//
     for (let i = 0; i < this.length; i++) {
-        if(!callback(this[i]))
+        if(!callbackFn(this[i]))
         {
             return false;
         }
     }
     return true;
 };
+
+//Test myEvery
+const isBelowThreshold = (currentValue) => currentValue < 40;
+const sample_array = [1, 30, 39, 29, 10, 13];
+
+console.log('myEvery: ')
+console.log(sample_array.myEvery(isBelowThreshold));// Print and Test myEvery: true.
+
+console.log('Every: ')
+console.log(sample_array.every(isBelowThreshold));// Print and Test Every: true.
+
+const isBelowThreshold2 = (currentValue) => currentValue < 30;
+console.log('myEvery: ')
+console.log(sample_array.myEvery(isBelowThreshold2));// Print and Test myEvery: false.
+
+console.log('Every: ')
+console.log(sample_array.every(isBelowThreshold2));// Print and Test Every: false.
+
+function isBigEnough(element, index, array) {
+    return element >= 10;
+}
+
+console.log('myEvery: ')
+console.log([12, 5, 8, 130, 44].myEvery(isBigEnough));   // Print and Test myEvery: false.
+console.log([12, 54, 18, 130, 44].myEvery(isBigEnough)); // Print and Test myEvery: true.
+
+console.log('Every: ')
+console.log([12, 5, 8, 130, 44].every(isBigEnough));   // Print and Test Every: false.
+console.log([12, 54, 18, 130, 44].every(isBigEnough)); // Print and Test Every: true.
 
 // REDUCE //
 Array.prototype.myReduce = function() {
