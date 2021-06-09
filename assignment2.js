@@ -188,9 +188,21 @@ console.log([12, 5, 8, 130, 44].every(isBigEnough));   // Print and Test Every: 
 console.log([12, 54, 18, 130, 44].every(isBigEnough)); // Print and Test Every: true.
 
 // REDUCE //
-Array.prototype.myReduce = function() {
+Array.prototype.myReduce = function(callbackFn,initialValue) {
     //The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.//
 
+    const returnValue = initialValue;
+    for (let i = 0; i < this.length; i++) {
+        if (i==0 && !this[initialValue]) 
+        {
+          returnValue = this[i];
+        }//end of if statement
+        else
+        {
+            result = callbackFn(this[i])
+        }// end of else statement
+        
+    }
 };
 
 // INCLUDES //
