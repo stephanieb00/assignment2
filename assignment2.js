@@ -191,19 +191,61 @@ console.log([12, 54, 18, 130, 44].every(isBigEnough)); // Print and Test Every: 
 Array.prototype.myReduce = function(callbackFn,initialValue) {
     //The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.//
 
-    const returnValue = initialValue;
+    //arguments is an Array-like object accessible inside functions that contains the values of the arguments passed to that function.
+    const initialState = arguments.length >1 ;
+    let returnValue = initialValue;
     for (let i = 0; i < this.length; i++) {
-        if (i==0 && !this[initialValue]) 
+        if (i==0 && !initialState) 
         {
           returnValue = this[i];
         }//end of if statement
         else
         {
-            result = callbackFn(this[i])
+            returnValue = callbackFn(returnValue, this[i])
         }// end of else statement
         
     }
+    return returnValue;
 };
+
+//Test myReduce
+
+const sample_array2 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+console.log('myReduce: ');
+console.log(sample_array2.myReduce(reducer));// Print and Test myReduce: 10 
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log('myReduce: ');
+console.log(sample_array2.myReduce(reducer, 5));// Print and Test myReduce: 15
+// expected output: 15
+
+// 1 + 2 + 3 + 4
+console.log('Reduce: ');
+console.log(sample_array2.reduce(reducer));// Print and Test Reduce: 10 
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log('Reduce: ');
+console.log(sample_array2.reduce(reducer, 5));// Print and Test Reduce: 15
+// expected output: 15
+
+console.log('myReduce: ');
+let sum1 = [0, 1, 2, 3].myReduce(function (accumulator, currentValue) 
+{
+   return accumulator + currentValue//Test myReduce
+}, 0)
+console.log(sum1);//Print 6
+
+console.log('Reduce: ');
+let sum2 = [0, 1, 2, 3].reduce(function (accumulator, currentValue) 
+{
+    return accumulator + currentValue//Test Reduce: 6
+}, 0)
+console.log(sum2);//Print 6
 
 // INCLUDES //
 Array.prototype.myIncludes = function() {
