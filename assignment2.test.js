@@ -1,3 +1,5 @@
+import '../assignment2/assignment2.js' 
+
 //Array for testing
 
 const arr = [1, 2, 3];

@@ -1,7 +1,5 @@
 // FOR EACH //
 Array.prototype.myEach = function (callbackFn) {
-    //The forEach() method executes a provided function once for each array element.//
-    
     for (let i = 0; i < this.length; i++) {
         if (this[i] == undefined) continue; //for cases like these [1,,3]
         callbackFn(this[i], i, this);
@@ -10,32 +8,16 @@ Array.prototype.myEach = function (callbackFn) {
 
 // MAP //
 Array.prototype.myMap = function (callbackFn) {
-    //The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.//
-    /*
-        Accepts three arguments:
-            current element
-            current elements index
-            entire array
-    */
     const returnArray = []; //empty array that will be returned later.
     for (let i = 0; i < this.length; i++) {
         returnArray.push(callbackFn(this[i], i, this));
-    } //end of for loo
+    } //end of for loop
 
     return (returnArray);
 };
 
 // FILTER //
 Array.prototype.myFilter = function (callbackFn) {
-    //The filter() method creates a new array with all elements that pass the test implemented by the provided function.//
-    /*
-        We want to take these steps:
-            - Create an empty array 
-            - Iterate through each element in array elements. 
-            - Check for the current element of the array. 
-            - If it is true then add it to the empty array. 
-    */
-
     const returnArray = []; //empty array
     for (let i = 0; i < this.length; i++) {
         if (callbackFn(this[i])) {
@@ -50,10 +32,6 @@ Array.prototype.myFilter = function (callbackFn) {
 // SOME //
 Array.prototype.mySome = function (callback) {
     //This parameter is no longer called callbackFn according to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Some
-    /*The some() method tests whether at least one element in the array passes the test implemented by the provided function. 
-        It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. 
-        It doesn't modify the array.
-    */
 
     for (let i = 0; i < this.length; i++) {
         if (callback(this[i])) {
@@ -61,12 +39,10 @@ Array.prototype.mySome = function (callback) {
         }
     }
     return false;
-
 };
 
 // EVERY //
 Array.prototype.myEvery = function (callbackFn) {
-    //The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.//
     for (let i = 0; i < this.length; i++) {
         if (!callbackFn(this[i])) {
             return false;
@@ -132,15 +108,15 @@ Object.grabKeys = function (obj) {
     let keys = [];
     for (const property in obj)
         keys.push(property);
-    
+
     return keys;
 };
 
 // VALUES //
 Object.grabValues = function (obj) {
     let keys = [];
-    for (const property in obj) 
+    for (const property in obj)
         keys.push(obj[property]);
-    
+
     return keys;
 };
