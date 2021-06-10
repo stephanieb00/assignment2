@@ -9,7 +9,7 @@ const array = [1, 2, 3, 4, 5];
 // FOR EACH //
 Array.prototype.myEach = function (callbackFn) {
     //The forEach() method executes a provided function once for each array element.//
-
+    
     for (let i = 0; i < this.length; i++) {
         if (this[i] == undefined) continue; //for cases like these [1,,3]
         callbackFn(this[i], i, this);
@@ -174,7 +174,7 @@ console.log(sample_array.every(isBelowThreshold2)); // Print and Test Every: fal
 function isBigEnough(element, index, array) {
     return element >= 10;
 }
-    
+
 console.log('myEvery: ')
 console.log([12, 5, 8, 130, 44].myEvery(isBigEnough)); // Print and Test myEvery: false.
 console.log([12, 54, 18, 130, 44].myEvery(isBigEnough)); // Print and Test myEvery: true.
@@ -185,8 +185,6 @@ console.log([12, 54, 18, 130, 44].every(isBigEnough)); // Print and Test Every: 
 
 // REDUCE //
 Array.prototype.myReduce = function (callbackFn, initialValue) {
-    //The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.//
-
     if (initialValue === undefined)
         accumulator = undefined;
     else
@@ -202,51 +200,50 @@ Array.prototype.myReduce = function (callbackFn, initialValue) {
 };
 
 // Test Reduce
-console.log("REDUCE TESTS");
+console.log("REDUCE TESTS ---------------------------------------------------------------");
 const array1 = [1, 2, 3, 4];
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
 // 1 + 2 + 3 + 4
-console.log(array1.myReduce(reducer));
-// expected output: 10
-
+console.log(array1.myReduce(reducer)); // expected output: 10
 // 5 + 1 + 2 + 3 + 4
-console.log(array1.myReduce(reducer, 5));
-// expected output: 15
+console.log(array1.myReduce(reducer, 5)); // expected output: 15
 
 // INCLUDES //
 Array.prototype.myIncludes = function (searchElement, fromIndex = 0) {
-    //The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.//
-
     for (let i = fromIndex; i < this.length; i++) {
-        if (searchElement === this[i]) {
+        if (searchElement === this[i])
             return true;
-        }
     }
     return false;
 };
 
 // Test Includes
+console.log("INCLUDES TESTS -------------------------------------------------------------");
 let test = [1, 3, 4, 6];
-test.myIncludes(7);
-test.myIncludes(0);
-test.myIncludes(6);
+console.log(test);
+console.log(test.myIncludes(7));
+console.log(test.myIncludes(0));
+console.log(test.myIncludes(6));
 
-let test2 = ["A", "B", "Z", 5];
+let test2 = ["A", "B", "Z", 5, "B", "F", "Z"];
 
 // INDEXOF //
 Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
-    //The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.//
-    for (let i = fromIndex; i < this.length; i++) {
-        if (searchElement === this[i]) return i;
-    }
+    for (let i = fromIndex; i < this.length; i++)
+        if (searchElement === this[i])
+            return i;
+
     return -1;
 };
 
+// Test myIndexOf
+console.log("MYINDEXOF TESTS ------------------------------------------------------------");
+console.log(test2.myIndexOf("B"));
+console.log(test2.myIndexOf("B"));
+console.log(test2.myIndexOf("J"));
+
 // PUSH //
 Array.prototype.myPush = function (elementN) {
-    //The push() method adds one or more elements to the end of an array and returns the new length of the array.//
-
     let len = this.length;
     this[len] = elementN;
     len++;
@@ -254,7 +251,9 @@ Array.prototype.myPush = function (elementN) {
 };
 
 // Test Push
+console.log("PUSH TESTS -----------------------------------------------------------------");
 arrayTest = ["Florence", "Sicily", "Rome", "Kyoto "];
+console.log(arrayTest);
 arrayTest.myPush("Miami");
 arrayTest.myPush(["New York", "Boston", "Los Angeles"]);
 console.log(arrayTest);
@@ -262,52 +261,48 @@ console.log(arrayTest.length);
 
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function (searchElement, fromIndex = 0) {
-    //The lastIndexOf() method returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting at fromIndex.//
-
     let lastIndexOf = -1;
-
-    for (let i = fromIndex; i < this.length; i++) {
-        if (searchElement === this[i]) lastIndexOf = i;
-    }
+    for (let i = fromIndex; i < this.length; i++)
+        if (searchElement === this[i])
+            lastIndexOf = i;
 
     return lastIndexOf;
 };
 
+// Test myLastIndexOf
+console.log("MYLASTINDEXOF TESTS --------------------------------------------------------");
+console.log(test2);
+console.log(test2.myLastIndexOf("Z")); // 6
+console.log(test2.myLastIndexOf("B")); // 4
+console.log(test2.myLastIndexOf("J")); // -1
+
 // KEYS //
 Object.grabKeys = function (obj) {
-    //The Object.keys() method returns an array of a given object's own enumerable property names, iterated in the same order that a normal loop would.//
     let keys = [];
-
-    for (const property in obj) {
+    for (const property in obj)
         keys.push(property);
-    }
-
+    
     return keys;
 };
 
 // Tests Keys
+console.log("KEYS TESTS -----------------------------------------------------------------");
 const test3 = {
     a: "test",
     b: "test2",
     c: "test3"
 };
-
 console.log(Object.grabKeys(test3));
 
 // VALUES //
 Object.grabValues = function (obj) {
-    /*The Object.values() method returns an array of a given object's own enumerable property values, 
-        in the same order as that provided by a for...in loop. 
-        (The only difference is that a for...in loop enumerates properties in the prototype chain as well.)
-    */
     let keys = [];
-
-    for (const property in obj) {
+    for (const property in obj) 
         keys.push(obj[property]);
-    }
-
+    
     return keys;
 };
 
 // Test grab values
+console.log("GRAB TESTS -----------------------------------------------------------------");
 console.log(Object.grabValues(test3));
