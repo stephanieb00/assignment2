@@ -1,5 +1,4 @@
 //Array for testing
-
 const arr = [1, 2, 3];
 const arr2 = [1, , 3];
 const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
@@ -21,7 +20,7 @@ console.log("myEach for undefined: ");
 arr2.forEach((x) => console.log(x));
 
 //Testing myMap
-console.log("myMap TESTS ---------------------------------------------------------------");
+console.log("myMap TESTS ----------------------------------------------------------------");
 
 console.log("myMap: ");
 const map1a = arr.myMap(x => x);
@@ -38,7 +37,7 @@ const map2b = arr2.map(x => x);
 console.log(map2b);
 
 //Test myFilter
-console.log("myFilter TESTS ---------------------------------------------------------------");
+console.log("myFilter TESTS -------------------------------------------------------------");
 
 const words_arr1a = words.myFilter(word => word.length > 6); //Test myFilter
 console.log("myFilter: ");
@@ -47,7 +46,6 @@ console.log(words_arr1a); //Print myFilter
 const words_arr1b = words.filter(word => word.length > 6); //Test .filter
 console.log("Filter: ");
 console.log(words_arr1b); //print .filter
-
 
 const words_arr2a = words2.myFilter(word => word.length > 6); //Test myFilter
 console.log("myFilter: ");
@@ -74,14 +72,13 @@ console.log([2, 5, 8, 1, 4].mySome(x => x > 10)); // Print and Test mySome: fals
 console.log('mySome: ')
 console.log([12, 5, 8, 1, 4].mySome(x => x > 10)); // Print and Test mySome: true
 
-
 console.log('Some: ') //Test Some
 console.log([2, 5, 8, 1, 4].some(x => x > 10)); // Print and Test Some: false
 console.log('Some: ')
 console.log([12, 5, 8, 1, 4].some(x => x > 10)); //Print and Test Some: true
 
 //Test myEvery
-console.log("myEvery TESTS ---------------------------------------------------------------");
+console.log("myEvery TESTS --------------------------------------------------------------");
 const isBelowThreshold = (currentValue) => currentValue < 40;
 const sample_array = [1, 30, 39, 29, 10, 13];
 
@@ -99,7 +96,7 @@ console.log('Every: ')
 console.log(sample_array.every(isBelowThreshold2)); // Print and Test Every: false.
 
 function isBigEnough(element, index, array) {
-    return element >= 10;
+	return element >= 10;
 }
 
 console.log('myEvery: ')
@@ -114,53 +111,104 @@ console.log([12, 54, 18, 130, 44].every(isBigEnough)); // Print and Test Every: 
 console.log("REDUCE TESTS ---------------------------------------------------------------");
 const array1 = [1, 2, 3, 4];
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-// 1 + 2 + 3 + 4
-console.log(array1.myReduce(reducer)); // expected output: 10
-// 5 + 1 + 2 + 3 + 4
-console.log(array1.myReduce(reducer, 5)); // expected output: 15
+
+if (array1.myReduce(reducer) === array1.reduce(reducer))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+if (array1.myReduce(reducer, 5) === array1.reduce(reducer, 5))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
 
 // Test Includes
 console.log("INCLUDES TESTS -------------------------------------------------------------");
 let test = [1, 3, 4, 6];
-console.log(test);
-console.log(test.myIncludes(7));
-console.log(test.myIncludes(0));
-console.log(test.myIncludes(6));
 
-let test2 = ["A", "B", "Z", 5, "B", "F", "Z"];
+if (test.myIncludes(7) === test.includes(7))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+
+if (test.myIncludes(6) === test.includes(6))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+
+if (test.myIncludes(0) === test.includes(0))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
 
 // Test myIndexOf
+let test2 = ["A", "B", "Z", 5, "B", "F", "Z"];
 console.log("MYINDEXOF TESTS ------------------------------------------------------------");
-console.log(test2.myIndexOf("B"));
-console.log(test2.myIndexOf("B"));
-console.log(test2.myIndexOf("J"));
+
+if (test2.myIndexOf("J") === test2.indexOf("J"))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+if (test2.myIndexOf("B") === test2.indexOf("B"))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
 
 // Test Push
 console.log("PUSH TESTS -----------------------------------------------------------------");
 arrayTest = ["Florence", "Sicily", "Rome", "Kyoto "];
-console.log(arrayTest);
 arrayTest.myPush("Miami");
 arrayTest.myPush(["New York", "Boston", "Los Angeles"]);
-console.log(arrayTest);
-console.log(arrayTest.length);
+
+arrayTest2 = ["Florence", "Sicily", "Rome", "Kyoto "];
+arrayTest.push("Miami");
+arrayTest.push(["New York", "Boston", "Los Angeles"]);
+
+if (arrayTest = arrayTest2)
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
 
 // Test myLastIndexOf
 console.log("MYLASTINDEXOF TESTS --------------------------------------------------------");
-console.log(test2);
-console.log(test2.myLastIndexOf("Z")); // 6
-console.log(test2.myLastIndexOf("B")); // 4
-console.log(test2.myLastIndexOf("J")); // -1
+
+if (test2.myLastIndexOf("Z") == test2.lastIndexOf("Z"))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+
+if (test2.myLastIndexOf("B") == test2.lastIndexOf("B"))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+
+if (test2.myLastIndexOf("J") == test2.lastIndexOf("J"))
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
 
 // Tests Keys
 console.log("KEYS TESTS -----------------------------------------------------------------");
 const test3 = {
-    a: "test",
-    b: "test2",
-    c: "test3"
+	a: "test1",
+	b: "test2",
+	c: "test3"
 };
-console.log(Object.grabKeys(test3));
 
+let keyarr1 = Object.grabKeys(test3);
+let keyarr2 = Object.keys(test3);
+
+if (keyarr1 === keyarr2)
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
 
 // Test grab values
 console.log("GRAB TESTS -----------------------------------------------------------------");
-console.log(Object.grabValues(test3));
+
+let valarr1 = Object.grabValues(test3);
+let valarr2 = Object.values(test3);
+
+if (valarr1 === valarr2)
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+else
+	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");

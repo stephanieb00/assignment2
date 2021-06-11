@@ -1,6 +1,6 @@
 # Assignment 2
 
-### Group Members:
+### Group Members
 ```
 Stephanie Bravo (stephanieb00) 
 Masum Ahmed (masumahmed) 
@@ -8,12 +8,4 @@ Masum Ahmed (masumahmed)
 
 ### Running Tests
 
-Copy and paste this code into a bash terminal with the path of the project folder to run the tests.
-
-```
-touch temp.js
-cat assignment2.js assignment2.test.js > temp.js 
-node temp.js
-rm temp.js
-echo "press enter to exit"
-```
+Run the bash script with the command `bash runTest` in your terminal to run `assignment2.js` with the `assignment2.test.js` unit tests appended.

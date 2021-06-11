@@ -1,0 +1,4 @@
+touch temp.js
+cat assignment2.js assignment2.test.js > temp.js 
+node temp.js
+rm temp.js
