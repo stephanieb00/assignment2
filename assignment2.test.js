@@ -113,45 +113,45 @@ const array1 = [1, 2, 3, 4];
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
 if (array1.myReduce(reducer) === array1.reduce(reducer))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 if (array1.myReduce(reducer, 5) === array1.reduce(reducer, 5))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 // Test Includes
 console.log("INCLUDES TESTS -------------------------------------------------------------");
 let test = [1, 3, 4, 6];
 
 if (test.myIncludes(7) === test.includes(7))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 if (test.myIncludes(6) === test.includes(6))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 if (test.myIncludes(0) === test.includes(0))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 // Test myIndexOf
 let test2 = ["A", "B", "Z", 5, "B", "F", "Z"];
 console.log("MYINDEXOF TESTS ------------------------------------------------------------");
 
 if (test2.myIndexOf("J") === test2.indexOf("J"))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 if (test2.myIndexOf("B") === test2.indexOf("B"))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 // Test Push
 console.log("PUSH TESTS -----------------------------------------------------------------");
@@ -164,27 +164,27 @@ arrayTest.push("Miami");
 arrayTest.push(["New York", "Boston", "Los Angeles"]);
 
 if (arrayTest = arrayTest2)
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 // Test myLastIndexOf
 console.log("MYLASTINDEXOF TESTS --------------------------------------------------------");
 
 if (test2.myLastIndexOf("Z") == test2.lastIndexOf("Z"))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 if (test2.myLastIndexOf("B") == test2.lastIndexOf("B"))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 if (test2.myLastIndexOf("J") == test2.lastIndexOf("J"))
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 // Tests Keys
 console.log("KEYS TESTS -----------------------------------------------------------------");
@@ -197,10 +197,18 @@ const test3 = {
 let keyarr1 = Object.grabKeys(test3);
 let keyarr2 = Object.keys(test3);
 
-if (keyarr1 === keyarr2)
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+let pass = true;
+for (let i = 0; i < keyarr1.length; i++) {
+	if(keyarr1[i] != keyarr2[i]){
+		pass = false;
+		break;
+	}
+}
+
+if (pass)
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
 
 // Test grab values
 console.log("GRAB TESTS -----------------------------------------------------------------");
@@ -208,7 +216,15 @@ console.log("GRAB TESTS --------------------------------------------------------
 let valarr1 = Object.grabValues(test3);
 let valarr2 = Object.values(test3);
 
-if (valarr1 === valarr2)
-	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✅");
+pass = true;
+for (let i = 0; i < valarr1.length; i++) {
+	if(valarr1[i] != valarr2[i]){
+		pass = false;
+		break;
+	}
+}
+
+if (pass)
+	console.log('\x1b[36m%s\x1b[0m', "Test passed! ✔");
 else
-	console.log("\x1b[31m", "Test failed! ❌", "\x1b[0m");
+	console.log("\x1b[31m", "Test failed! X", "\x1b[0m");
