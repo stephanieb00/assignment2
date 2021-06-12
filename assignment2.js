@@ -52,27 +52,21 @@ Array.prototype.myEvery = function (callbackFn) {
 };
 
 // REDUCE //
-Array.prototype.myReduce = function (callbackFn, initialValue) {
-    if (initialValue === undefined)
-        accumulator = undefined;
-    else
-        accumulator = initialValue;
+Array.prototype.myReduce = function(callbackFn, initialValue = 0) {
+    let accumulator = initialValue; // if supplied use initialValue, else = 0
 
-    for (var i = 0; i < this.length; i++) {
-        if (accumulator !== undefined)
-            accumulator = callbackFn.call(undefined, accumulator, this[i], i, this);
-        else
-            accumulator = this[i];
-    }
+    for (let i = 0; i < this.length; i++)
+        accumulator = callbackFn(accumulator, this[i], i, this);
+    
     return accumulator;
-};
+}
 
 // INCLUDES //
 Array.prototype.myIncludes = function (searchElement, fromIndex = 0) {
-    for (let i = fromIndex; i < this.length; i++) {
+    for (let i = fromIndex; i < this.length; i++)
         if (searchElement === this[i])
             return true;
-    }
+
     return false;
 };
 
@@ -87,9 +81,7 @@ Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
 
 // PUSH //
 Array.prototype.myPush = function (elementN) {
-    let len = this.length;
-    this[len] = elementN;
-    len++;
+    this[this.length] = elementN;
     return this.length;
 };
 
